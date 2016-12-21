@@ -4,6 +4,8 @@
     style="?android:attr/textAppearanceLarge"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:textColor="@android:color/white"
     android:padding="16dp"
+    android:background="@android:color/black"
     android:textIsSelectable="true"
     tools:context="example.com.sampleapptab.ItemDetailFragment" />
