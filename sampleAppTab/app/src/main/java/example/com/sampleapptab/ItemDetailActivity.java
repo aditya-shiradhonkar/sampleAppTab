@@ -67,7 +67,7 @@ public class ItemDetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
-            //sample app git test 2
+            //sample app git test 3
 
             // This ID represents the Home or Up button. In the case of this
             // activity, the Up button is shown. For
