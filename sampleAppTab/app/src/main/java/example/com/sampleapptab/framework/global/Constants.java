@@ -9,6 +9,6 @@ public class Constants {
 
     public static final int AUTHENTICATION_DETAILS = 2;
 
-    public static final String BASE_URL_PREFERENCES_NAME = "mPosBaseUrlPreferences";
+    public static final String BASE_URL_PREFERENCES_NAME = "StalkerBaseUrlPreferences";
     public static final String BACKEND_BASE_URL_PREFERENCE = "backendBaseUrlPreference";
 }

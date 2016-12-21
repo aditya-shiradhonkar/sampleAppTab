@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import example.com.sampleapptab.demochannel.DemoChannelFragment;
+
 public class ItemListActivity extends AppCompatActivity {
 
     private ArrayList<String> menuItems;
@@ -33,6 +35,7 @@ public class ItemListActivity extends AppCompatActivity {
         menuItems.add("Settings");
         menuItems.add("Select Profile");
         menuItems.add("About");
+        menuItems.add("Demo Channel");
         menuItems.add("Exit");
 
         setupRecyclerView((RecyclerView) recyclerView, menuItems);
@@ -69,13 +72,20 @@ public class ItemListActivity extends AppCompatActivity {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Bundle arguments = new Bundle();
-                    arguments.putString(ItemDetailFragment.ARG_ITEM_ID, holder.mItem);
-                    ItemDetailFragment fragment = new ItemDetailFragment();
-                    fragment.setArguments(arguments);
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.item_detail_container, fragment)
-                            .commit();
+                    if(holder.mItem.equals("Demo Channel")) {
+                        DemoChannelFragment fragment = new DemoChannelFragment();
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.item_detail_container, fragment)
+                                .commit();
+                    } else {
+                        Bundle arguments = new Bundle();
+                        arguments.putString(ItemDetailFragment.ARG_ITEM_ID, holder.mItem);
+                        ItemDetailFragment fragment = new ItemDetailFragment();
+                        fragment.setArguments(arguments);
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.item_detail_container, fragment)
+                                .commit();
+                    }
                 }
             });
         }
