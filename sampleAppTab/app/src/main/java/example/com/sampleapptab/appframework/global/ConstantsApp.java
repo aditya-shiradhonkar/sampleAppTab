@@ -1,10 +1,10 @@
 
-package example.com.sampleapptab.framework.global;
+package example.com.sampleapptab.appframework.global;
 
 /**
  * Created by aniruddhatr on 6/13/2016. All the project specific constants are defined in the class
  */
-public class Constants {
+public class ConstantsApp {
     public static final String BACKEND_BASE_URL = "https://172.27.110.162:9002/";
 
     public static final int AUTHENTICATION_DETAILS = 2;

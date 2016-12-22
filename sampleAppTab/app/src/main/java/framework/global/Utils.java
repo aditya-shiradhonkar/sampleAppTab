@@ -10,10 +10,10 @@ import framework.ui.BaseFragment;
 
 /**
  * Created by aniruddhatr on 6/13/2016. This class will contain the application framework specific
- * utility and to be extended by Applicatio specifc Utils
+ * utility and to be extended by Applicatio specifc UtilsApp
  */
 public class Utils {
-    private static final String TAG = "Utils";
+    private static final String TAG = "UtilsApp";
 
     public static void loadImage(BaseFragment uiHandler, String url, int placeHolderImageDrawable,
             ImageView imageView, NetworkCommunication networkCommunication) {

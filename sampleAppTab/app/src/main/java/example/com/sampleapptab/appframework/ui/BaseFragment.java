@@ -1,17 +1,17 @@
 
-package example.com.sampleapptab.framework.ui;
+package example.com.sampleapptab.appframework.ui;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import example.com.sampleapptab.framework.global.Constants;
-import example.com.sampleapptab.framework.model.IRetrofitResponseCallback;
-import example.com.sampleapptab.framework.network.IRequestBodyCreator;
-import example.com.sampleapptab.framework.network.IResponseHandler;
-import example.com.sampleapptab.framework.network.creator.CallbackCreator;
-import example.com.sampleapptab.framework.network.creator.RequestBodyCreator;
-import example.com.sampleapptab.framework.network.creator.RequestCreator;
-import example.com.sampleapptab.framework.network.creator.ResponseHandler;
+import example.com.sampleapptab.appframework.global.ConstantsApp;
+import example.com.sampleapptab.appframework.model.IRetrofitResponseCallbackApp;
+import example.com.sampleapptab.appframework.network.IRequestBodyCreatorApp;
+import example.com.sampleapptab.appframework.network.IResponseHandlerApp;
+import example.com.sampleapptab.appframework.network.creator.CallbackCreator;
+import example.com.sampleapptab.appframework.network.creator.RequestBodyCreator;
+import example.com.sampleapptab.appframework.network.creator.RequestCreator;
+import example.com.sampleapptab.appframework.network.creator.ResponseHandler;
 import framework.global.Logger;
 import framework.network.ICallbackCreator;
 import framework.network.IRequestCreator;
@@ -22,7 +22,7 @@ import framework.network.IRequestCreator;
  */
 
 public abstract class BaseFragment extends framework.ui.BaseFragment
-        implements IRetrofitResponseCallback {
+        implements IRetrofitResponseCallbackApp {
     private static final String TAG = "BaseFragment";
 
     public BaseFragment() {
@@ -30,12 +30,12 @@ public abstract class BaseFragment extends framework.ui.BaseFragment
     }
 
     @Override
-    public IRequestBodyCreator getRequestBodyCreator() {
+    public IRequestBodyCreatorApp getRequestBodyCreator() {
         return new RequestBodyCreator();
     }
 
     @Override
-    public IResponseHandler getResponseHandler() {
+    public IResponseHandlerApp getResponseHandler() {
         return new ResponseHandler();
     }
 
@@ -52,9 +52,9 @@ public abstract class BaseFragment extends framework.ui.BaseFragment
     @Override
     public String getBaseUrl() {
         SharedPreferences sharedPreferences = getActivity()
-                .getSharedPreferences(Constants.BASE_URL_PREFERENCES_NAME, Context.MODE_APPEND);
-        return sharedPreferences.getString(Constants.BACKEND_BASE_URL_PREFERENCE,
-                Constants.BACKEND_BASE_URL);
+                .getSharedPreferences(ConstantsApp.BASE_URL_PREFERENCES_NAME, Context.MODE_APPEND);
+        return sharedPreferences.getString(ConstantsApp.BACKEND_BASE_URL_PREFERENCE,
+                ConstantsApp.BACKEND_BASE_URL);
     }
 
     public void notifyAdapters() {
