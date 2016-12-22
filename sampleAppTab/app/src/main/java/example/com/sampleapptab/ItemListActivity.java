@@ -12,6 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import example.com.sampleapptab.demochannel.DemoChannelFragment;
+
+//import example.com.sampleapptab.demochannel.DemoChannelFragment;
+
 public class ItemListActivity extends AppCompatActivity {
 
     private ArrayList<String> menuItems;
@@ -31,6 +35,7 @@ public class ItemListActivity extends AppCompatActivity {
         menuItems.add("Settings");
         menuItems.add("Select Profile");
         menuItems.add("About");
+        menuItems.add("Demo Channel");
         menuItems.add("Exit");
 
         if (recyclerView != null) {
@@ -69,13 +74,20 @@ public class ItemListActivity extends AppCompatActivity {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Bundle arguments = new Bundle();
-                    arguments.putString(ItemDetailFragment.ARG_ITEM_ID, holder.mItem);
-                    ItemDetailFragment fragment = new ItemDetailFragment();
-                    fragment.setArguments(arguments);
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.item_detail_container, fragment)
-                            .commit();
+                    if(holder.mItem.equals("Demo Channel")) {
+                        DemoChannelFragment fragment = new DemoChannelFragment();
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.item_detail_container, fragment)
+                                .commit();
+                    } else {
+                        Bundle arguments = new Bundle();
+                        arguments.putString(ItemDetailFragment.ARG_ITEM_ID, holder.mItem);
+                        ItemDetailFragment fragment = new ItemDetailFragment();
+                        fragment.setArguments(arguments);
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.item_detail_container, fragment)
+                                .commit();
+                    }
                 }
             });
         }
@@ -88,7 +100,7 @@ public class ItemListActivity extends AppCompatActivity {
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             public final TextView mIdView;
-            public final TextView mContentView;
+            //public final TextView mContentView;
             //public DummyContent.DummyItem mItem;
 
             public String mItem;
@@ -97,7 +109,7 @@ public class ItemListActivity extends AppCompatActivity {
                 super(view);
                 mView = view;
                 mIdView = (TextView) view.findViewById(R.id.id);
-                mContentView = (TextView) view.findViewById(R.id.content);
+                //mContentView = (TextView) view.findViewById(R.id.content);
             }
         }
     }

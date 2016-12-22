@@ -1,7 +1,7 @@
 
-package example.com.sampleapptab.framework.network.creator;
+package example.com.sampleapptab.appframework.network.creator;
 
-import example.com.sampleapptab.framework.global.Constants;
+import example.com.sampleapptab.appframework.global.ConstantsApp;
 import framework.model.IRetrofitResponseCallback;
 import framework.network.RequestBody;
 
@@ -16,7 +16,7 @@ public class RequestBodyCreator extends AbstractRequestBodyCreator {
             IRetrofitResponseCallback iRetrofitResponseCallback, String userName, String password) {
 
         RequestBody requestBody = new RequestBody(iRetrofitResponseCallback,
-                Constants.AUTHENTICATION_DETAILS);
+                ConstantsApp.AUTHENTICATION_DETAILS);
         // requestBody.setiRetrofitRequest(IAuthenticationRequests.class);
 
         return requestBody;
