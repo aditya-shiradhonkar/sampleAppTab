@@ -11,7 +11,7 @@ import android.widget.MediaController;
 import android.widget.VideoView;
 
 import example.com.sampleapptab.R;
-import example.com.sampleapptab.framework.ui.BaseFragment;
+import example.com.sampleapptab.appframework.ui.BaseFragment;
 import framework.network.RequestBody;
 import framework.network.ResponseBody;
 
