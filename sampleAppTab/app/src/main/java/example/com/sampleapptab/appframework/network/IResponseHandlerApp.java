@@ -1,5 +1,5 @@
 
-package example.com.sampleapptab.framework.network;
+package example.com.sampleapptab.appframework.network;
 
 import framework.network.RequestBody;
 import framework.network.Response;
@@ -9,7 +9,7 @@ import framework.network.Response;
  * declared here
  */
 
-public interface IResponseHandler extends framework.network.creator.IResponseHandler {
+public interface IResponseHandlerApp extends framework.network.creator.IResponseHandler {
 
     void handleAuthenticationResponse(int status, RequestBody requestBody,
             Response retrofitResponse);

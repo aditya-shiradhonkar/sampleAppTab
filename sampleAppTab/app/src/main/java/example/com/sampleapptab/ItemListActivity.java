@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import example.com.sampleapptab.demochannel.DemoChannelFragment;
+//import example.com.sampleapptab.demochannel.DemoChannelFragment;
 
 public class ItemListActivity extends AppCompatActivity {
 
@@ -73,10 +73,10 @@ public class ItemListActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     if(holder.mItem.equals("Demo Channel")) {
-                        DemoChannelFragment fragment = new DemoChannelFragment();
+                        /*DemoChannelFragment fragment = new DemoChannelFragment();
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.item_detail_container, fragment)
-                                .commit();
+                                .commit();*/
                     } else {
                         Bundle arguments = new Bundle();
                         arguments.putString(ItemDetailFragment.ARG_ITEM_ID, holder.mItem);
@@ -98,7 +98,7 @@ public class ItemListActivity extends AppCompatActivity {
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             public final TextView mIdView;
-            public final TextView mContentView;
+            //public final TextView mContentView;
             //public DummyContent.DummyItem mItem;
 
             public String mItem;
@@ -107,7 +107,7 @@ public class ItemListActivity extends AppCompatActivity {
                 super(view);
                 mView = view;
                 mIdView = (TextView) view.findViewById(R.id.id);
-                mContentView = (TextView) view.findViewById(R.id.content);
+                //mContentView = (TextView) view.findViewById(R.id.content);
             }
         }
     }

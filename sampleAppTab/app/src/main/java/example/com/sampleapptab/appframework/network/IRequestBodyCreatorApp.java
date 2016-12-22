@@ -1,5 +1,5 @@
 
-package example.com.sampleapptab.framework.network;
+package example.com.sampleapptab.appframework.network;
 
 import framework.model.IRetrofitResponseCallback;
 import framework.network.RequestBody;
@@ -9,7 +9,7 @@ import framework.network.RequestBody;
  * here
  */
 
-public interface IRequestBodyCreator extends framework.network.creator.IRequestBodyCreator {
+public interface IRequestBodyCreatorApp extends framework.network.creator.IRequestBodyCreator {
     /*
      * Request's required in Login Fragment
      */

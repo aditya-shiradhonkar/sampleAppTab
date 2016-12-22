@@ -1,5 +1,5 @@
 
-package example.com.sampleapptab.framework.network.creator;
+package example.com.sampleapptab.appframework.network.creator;
 
 import framework.global.Logger;
 import framework.network.IRequestCreator;
@@ -29,7 +29,7 @@ public class RequestCreator implements IRequestCreator {
         switch (requestBody.getRequestType()) {
 
             /*
-             * case Constants.AUTHENTICATION_DETAILS: { IAuthenticationRequests absDayEndReport =
+             * case ConstantsApp.AUTHENTICATION_DETAILS: { IAuthenticationRequests absDayEndReport =
              * (IAuthenticationRequests) retrofit.create(requestBody.getiRetrofitRequest());
              * Call<AuthenticationResponseModel> call =
              * absDayEndReport.sendAuthenticationDetails(requestBody.getQueryParameters().get(

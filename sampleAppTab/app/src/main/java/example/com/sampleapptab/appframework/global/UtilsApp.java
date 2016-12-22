@@ -1,4 +1,4 @@
-package example.com.sampleapptab.framework.global;
+package example.com.sampleapptab.appframework.global;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -15,11 +15,11 @@ import example.com.sampleapptab.R;
 
 /**
  * Created by aniruddhatr on 10/18/2016.
- * Class is the subclass of framework.global.Utils, and will implement the application specific
+ * Class is the subclass of framework.global.UtilsApp, and will implement the application specific
  *  utility
  */
 
-public class Utils extends framework.global.Utils{
+public class UtilsApp extends framework.global.Utils{
     public static double round(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();
 

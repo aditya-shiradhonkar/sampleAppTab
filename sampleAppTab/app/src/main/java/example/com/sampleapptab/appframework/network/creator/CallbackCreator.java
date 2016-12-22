@@ -1,5 +1,5 @@
 
-package example.com.sampleapptab.framework.network.creator;
+package example.com.sampleapptab.appframework.network.creator;
 
 import framework.helper.BaseHelper;
 import framework.model.IRetrofitResponseCallback;
