@@ -4,7 +4,6 @@ package example.com.sampleapptab;
 import java.util.ArrayList;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -27,7 +26,6 @@ public class ItemListActivity extends AppCompatActivity {
         toolbar.setTitle(getTitle());
 
         View recyclerView = findViewById(R.id.item_list);
-        assert recyclerView != null;
 
         menuItems = new ArrayList<>();
         menuItems.add("Settings");
@@ -35,10 +33,12 @@ public class ItemListActivity extends AppCompatActivity {
         menuItems.add("About");
         menuItems.add("Exit");
 
-        setupRecyclerView((RecyclerView) recyclerView, menuItems);
+        if (recyclerView != null) {
+            setupRecyclerView((RecyclerView) recyclerView, menuItems);
+        }
     }
 
-    private void setupRecyclerView(@NonNull RecyclerView recyclerView, ArrayList<String> menuItems) {
+    private void setupRecyclerView(RecyclerView recyclerView, ArrayList<String> menuItems) {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(menuItems));
     }
 
