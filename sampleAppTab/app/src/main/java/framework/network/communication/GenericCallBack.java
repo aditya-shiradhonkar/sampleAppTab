@@ -31,7 +31,6 @@ public class GenericCallBack<T> implements Callback<T> {
             responseArrayList.addAll((ArrayList) response.body());
             iResponseBody = responseArrayList;
         } else {
-            Logger.i(TAG, "onResponse: "+response.body().toString());
             iResponseBody = (IResponseBody) response.body();
         }
         framework.network.Response networkResponse = new framework.network.Response(response.raw(),
