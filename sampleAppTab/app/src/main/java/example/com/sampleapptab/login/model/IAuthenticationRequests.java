@@ -12,11 +12,11 @@ import retrofit2.http.POST;
  */
 public interface IAuthenticationRequests {
 
-    @Headers({
+  /*  @Headers({
             "Content-Type : application/x-www-form-urlencoded",
             "Accept : application/json"
     })
-
+  */
     @FormUrlEncoded
     @POST("auth/token.php")
     Call<AuthenticationResponseModel> sendAuthenticationDetails(
