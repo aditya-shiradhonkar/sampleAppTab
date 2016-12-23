@@ -1,9 +1,14 @@
 
 package example.com.sampleapptab.appframework.network.creator;
 
+import example.com.sampleapptab.appframework.global.ConstantsApp;
+import example.com.sampleapptab.login.model.AuthenticationResponseModel;
+import example.com.sampleapptab.login.model.IAuthenticationRequests;
 import framework.global.Logger;
 import framework.network.IRequestCreator;
 import framework.network.RequestBody;
+import framework.network.communication.GenericCallBack;
+import retrofit2.Call;
 import retrofit2.Retrofit;
 
 /**
@@ -28,17 +33,15 @@ public class RequestCreator implements IRequestCreator {
         Logger.i(TAG, "Inside createRequest :" + requestBody);
         switch (requestBody.getRequestType()) {
 
-            /*
-             * case ConstantsApp.AUTHENTICATION_DETAILS: { IAuthenticationRequests absDayEndReport =
-             * (IAuthenticationRequests) retrofit.create(requestBody.getiRetrofitRequest());
-             * Call<AuthenticationResponseModel> call =
-             * absDayEndReport.sendAuthenticationDetails(requestBody.getQueryParameters().get(
-             * "client_id"), requestBody.getQueryParameters().get("client_secret"),
-             * requestBody.getQueryParameters().get("grant_type"),
-             * requestBody.getQueryParameters().get("username"),
-             * requestBody.getQueryParameters().get("password")); call.enqueue(new
-             * GenericCallBack<AuthenticationResponseModel>(requestBody)); } break;
-             */
+            case ConstantsApp.AUTHENTICATION_DETAILS: {
+                IAuthenticationRequests absDayEndReport = (IAuthenticationRequests) retrofit
+                        .create(requestBody.getiRetrofitRequest());
+                Call<AuthenticationResponseModel> call = absDayEndReport
+                        .sendAuthenticationDetails(requestBody.getFieldMap().get("grant_type"),
+                                requestBody.getFieldMap().get("mac"));
+                call.enqueue(new GenericCallBack<AuthenticationResponseModel>(requestBody));
+            }
+                break;
 
             default:
                 break;
