@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">sampleAppTab</string>
     <string name="title_item_detail">Item Detail</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="server_settings">Server Settings</string>
+    <string name="add_or_modify_server_settings">Add or Modify Server Settings</string>
+    <string name="about_app">About App</string>
+    <string name="profiles">Profiles</string>
+    <string name="add_profile">Add Profile</string>
+    <string name="select_profile">Select Profile</string>
 </resources>

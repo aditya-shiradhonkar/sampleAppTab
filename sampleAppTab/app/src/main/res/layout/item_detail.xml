@@ -8,4 +8,4 @@
     android:padding="16dp"
     android:background="@android:color/black"
     android:textIsSelectable="true"
-    tools:context="example.com.sampleapptab.ItemDetailFragment" />
+    tools:context="example.com.sampleapptab.settings.ItemDetailFragment" />

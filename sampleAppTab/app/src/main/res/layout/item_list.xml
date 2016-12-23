@@ -8,7 +8,7 @@
     android:orientation="horizontal"
     android:showDividers="middle"
     android:weightSum="10"
-    tools:context="example.com.sampleapptab.ItemListActivity">
+    tools:context="example.com.sampleapptab.settings.ItemListActivity">
 
     <!--
     This layout is a two-pane layout for the Items
@@ -24,7 +24,7 @@
         android:layout_weight="3"
         android:layout_height="match_parent"
         app:layoutManager="LinearLayoutManager"
-        tools:context="example.com.sampleapptab.ItemListActivity"
+        tools:context="example.com.sampleapptab.settings.ItemListActivity"
         tools:listitem="@layout/item_list_content" />
 
     <FrameLayout
