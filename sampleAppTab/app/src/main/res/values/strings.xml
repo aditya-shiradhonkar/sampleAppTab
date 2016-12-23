@@ -10,4 +10,5 @@
     <string name="profiles">Profiles</string>
     <string name="add_profile">Add Profile</string>
     <string name="select_profile">Select Profile</string>
+    <string name="unauthorized">Unauthorized</string>
 </resources>

@@ -14,5 +14,5 @@ public interface IRequestBodyCreatorApp extends framework.network.creator.IReque
      * Request's required in Login Fragment
      */
     RequestBody createAuthenticationRequestBody(IRetrofitResponseCallback iRetrofitResponseCallback,
-            String userName, String password);
+            String macId);
 }

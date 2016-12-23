@@ -16,7 +16,7 @@ public class Logger {
 
     private static String mName = "";
 
-    private static final String PREFIX_TAG = "MPOSIntegration_";
+    private static final String PREFIX_TAG = "Stalker_";
     private static final SimpleDateFormat stSDFLoggerMessageTime = new SimpleDateFormat(
             "MM/dd/yyyy hh:mm:ss:SS aa",
             Locale.getDefault());
@@ -30,7 +30,7 @@ public class Logger {
 
     private static boolean LOGGING = false;
     private static boolean stIsFileInitialized = false;
-    private static final String stLogDirectory = "/MPOSLog_Report";
+    private static final String stLogDirectory = "/StalkerLog_Report";
 
     static {
         // Create directory on SDCARD to save log files.
