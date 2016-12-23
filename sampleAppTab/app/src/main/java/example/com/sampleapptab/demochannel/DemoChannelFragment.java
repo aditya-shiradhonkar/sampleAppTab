@@ -54,9 +54,6 @@ public class DemoChannelFragment extends BaseFragment {
                 false);
         mChannelPreviewVV = (VideoView) demoChannelRootView.findViewById(R.id.channelPreviewVV);
         Uri uri = Uri.parse("http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8"); // Declare
-                                                                                                // your
-                                                                                                // url
-                                                                                                // here.
 
         mChannelPreviewVV.setMediaController(new MediaController(getActivity()));
         mChannelPreviewVV.setVideoURI(uri);
@@ -80,7 +77,7 @@ public class DemoChannelFragment extends BaseFragment {
 
                 if (retrofitResponse.body() == null) {
                     Toast.makeText(getActivity(),
-                            R.string.unauthorized + ", Message :"
+                            "unauthorized" + ", Message :"
                                     + retrofitResponse.getRawResponse().message() + " !!",
                             Toast.LENGTH_SHORT).show();
 

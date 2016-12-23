@@ -4,7 +4,9 @@ package example.com.sampleapptab.login.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AuthenticationResponseModel {
+import framework.model.IResponseBody;
+
+public class AuthenticationResponseModel implements IResponseBody{
 
     @SerializedName("token_type")
     @Expose

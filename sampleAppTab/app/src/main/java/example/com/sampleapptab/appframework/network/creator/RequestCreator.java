@@ -34,9 +34,9 @@ public class RequestCreator implements IRequestCreator {
         switch (requestBody.getRequestType()) {
 
             case ConstantsApp.AUTHENTICATION_DETAILS: {
-                IAuthenticationRequests absDayEndReport = (IAuthenticationRequests) retrofit
+                IAuthenticationRequests authRequest = (IAuthenticationRequests) retrofit
                         .create(requestBody.getiRetrofitRequest());
-                Call<AuthenticationResponseModel> call = absDayEndReport
+                Call<AuthenticationResponseModel> call = authRequest
                         .sendAuthenticationDetails(requestBody.getFieldMap().get("grant_type"),
                                 requestBody.getFieldMap().get("mac"));
                 call.enqueue(new GenericCallBack<AuthenticationResponseModel>(requestBody));

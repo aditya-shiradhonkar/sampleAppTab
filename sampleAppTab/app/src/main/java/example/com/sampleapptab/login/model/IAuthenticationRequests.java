@@ -18,7 +18,7 @@ public interface IAuthenticationRequests {
     })
 
     @FormUrlEncoded
-    @POST("/auth/token.php")
+    @POST("auth/token.php")
     Call<AuthenticationResponseModel> sendAuthenticationDetails(
             @Field("grant_type") String grantType,
             @Field("mac") String mac);
