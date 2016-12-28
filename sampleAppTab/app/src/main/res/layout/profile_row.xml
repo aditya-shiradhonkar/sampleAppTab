@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <Button
+        android:id="@+id/button2"
+        android:textSize="14sp"
+        android:background="@drawable/button_gradient"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:textAllCaps="true"
+        android:layout_toStartOf="@+id/delete_button"
+        android:text="Sample Profile Id XYZ214234828364" />
+
+    <ImageView
+        android:id="@+id/delete_button"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:padding="5dp"
+        android:src="@drawable/delete_icon"
+        android:layout_alignParentEnd="true"/>
+
+</RelativeLayout>

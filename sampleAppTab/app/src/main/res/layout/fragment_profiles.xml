@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:padding="@dimen/text_margin"
+    tools:context="example.com.sampleapptab.settings.ProfilesFragment">
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profiles"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12sp" />
+
+    <View
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/darker_gray" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/separator"
+        android:background="@drawable/button_gradient"
+        android:text="@string/add_profile"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_below="@+id/button"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/button_gradient"
+        android:text="@string/select_profile"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:visibility="gone" />
+
+
+    <include
+        android:id="@+id/item1"
+        layout="@layout/profile_row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button2"
+        android:layout_marginTop="10dp" />
+
+    <include
+        android:id="@+id/item2"
+        layout="@layout/profile_row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item1"
+        android:layout_marginTop="10dp" />
+
+</RelativeLayout>
