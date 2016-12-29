@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="example.com.sampleapptab.tv.channels.view.ChannelsFragment"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/channelListPreviewRL"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/liveTvTitleTV"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LIVE TV/ALL/BY NUMBER"/>
+
+        <Button
+            android:layout_width="5dp"
+            android:layout_height="wrap_content"
+            android:text="BACK"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/channelListRV"
+            android:layout_below="@id/liveTvTitleTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/channelPreviewRL"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <VideoView
+            android:id="@+id/channelPreviewVV"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,9 +1,12 @@
 
 package example.com.sampleapptab.appframework.network.creator;
 
+import example.com.sampleapptab.app.SampleAppTabApplication;
 import example.com.sampleapptab.appframework.global.ConstantsApp;
 import example.com.sampleapptab.login.model.AuthenticationResponseModel;
 import example.com.sampleapptab.login.model.IAuthenticationRequests;
+import example.com.sampleapptab.tv.channels.model.GetChannelsListResponseModel;
+import example.com.sampleapptab.tv.channels.model.ITVRequests;
 import framework.global.Logger;
 import framework.network.IRequestCreator;
 import framework.network.RequestBody;
@@ -31,6 +34,8 @@ public class RequestCreator implements IRequestCreator {
     @Override
     public void createRequest(Retrofit retrofit, RequestBody requestBody) {
         Logger.i(TAG, "Inside createRequest :" + requestBody);
+        String authorizationToken = "Bearer " + SampleAppTabApplication.getAccessToken();
+
         switch (requestBody.getRequestType()) {
 
             case ConstantsApp.AUTHENTICATION_DETAILS: {
@@ -42,6 +47,15 @@ public class RequestCreator implements IRequestCreator {
                 call.enqueue(new GenericCallBack<AuthenticationResponseModel>(requestBody));
             }
                 break;
+
+            case ConstantsApp.GET_CHANNELS_LIST: {
+                ITVRequests itvRequests = (ITVRequests) retrofit
+                        .create(requestBody.getiRetrofitRequest());
+                Call<GetChannelsListResponseModel> call = itvRequests
+                        .getChannelsListRequest(authorizationToken, "tvchannels");
+                call.enqueue(new GenericCallBack<GetChannelsListResponseModel>(requestBody));
+            }
+            break;
 
             default:
                 break;

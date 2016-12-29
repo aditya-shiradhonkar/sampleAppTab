@@ -15,4 +15,6 @@ public interface IRequestBodyCreatorApp extends framework.network.creator.IReque
      */
     RequestBody createAuthenticationRequestBody(IRetrofitResponseCallback iRetrofitResponseCallback,
             String macId);
+
+    RequestBody createGetChannelsRequestBody(IRetrofitResponseCallback iRetrofitResponseCallback);
 }

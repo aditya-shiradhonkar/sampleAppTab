@@ -6,6 +6,7 @@ import java.util.Map;
 
 import example.com.sampleapptab.appframework.global.ConstantsApp;
 import example.com.sampleapptab.login.model.IAuthenticationRequests;
+import example.com.sampleapptab.tv.channels.model.ITVRequests;
 import framework.model.IRetrofitResponseCallback;
 import framework.network.RequestBody;
 
@@ -28,6 +29,16 @@ public class RequestBodyCreator extends AbstractRequestBodyCreator {
         fieldMap.put("mac", macId);
 
         requestBody.setFieldMap(fieldMap);
+        return requestBody;
+    }
+
+    @Override
+    public RequestBody createGetChannelsRequestBody(
+            IRetrofitResponseCallback iRetrofitResponseCallback) {
+        RequestBody requestBody = new RequestBody(iRetrofitResponseCallback,
+                ConstantsApp.GET_CHANNELS_LIST);
+        requestBody.setiRetrofitRequest(ITVRequests.class);
+
         return requestBody;
     }
 

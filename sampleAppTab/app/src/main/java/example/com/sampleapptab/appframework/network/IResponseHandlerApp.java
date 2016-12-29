@@ -1,6 +1,9 @@
 
 package example.com.sampleapptab.appframework.network;
 
+import java.util.ArrayList;
+
+import example.com.sampleapptab.tv.channels.view.Channel;
 import framework.network.RequestBody;
 import framework.network.Response;
 
@@ -13,4 +16,6 @@ public interface IResponseHandlerApp extends framework.network.creator.IResponse
 
     void handleAuthenticationResponse(int status, RequestBody requestBody,
             Response retrofitResponse);
+
+    void handleGetChannelsResponse(RequestBody requestBody, Response retrofitResponse, ArrayList<Channel> mChannelList);
 }
