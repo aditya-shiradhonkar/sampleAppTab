@@ -89,7 +89,7 @@ public class DemoChannelFragment extends BaseFragment {
                     return;
                 }
 
-                getResponseHandler().handleAuthenticationResponse(ConstantsApp.STATUS_OK,
+                getResponseHandler().handleAuthenticationResponse(this, ConstantsApp.STATUS_OK,
                         requestBody, retrofitResponse);
                 /*
                  * Intent intentToHome = new Intent(getActivity(), HomeActivity.class);

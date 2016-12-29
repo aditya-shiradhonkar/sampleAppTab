@@ -79,7 +79,7 @@ public class ChannelsFragment extends BaseFragment {
             Uri uri = Uri.parse(currentUrl);
             mChannelPreviewVV.setMediaController(new MediaController(getActivity()));
             mChannelPreviewVV.setVideoURI(uri);
-
+            mChannelPreviewVV.setTag(currentUrl);
             mChannelPreviewVV.requestFocus();
             mChannelPreviewVV.start();
         }
@@ -142,6 +142,7 @@ public class ChannelsFragment extends BaseFragment {
 
     @Override
     public void onFailure(RequestBody requestBody, ResponseBody responseBody) {
+        Utils.cancelProgressDialog(mProgressDialog);
         Logger.i(TAG, "onFailure");
     }
 
