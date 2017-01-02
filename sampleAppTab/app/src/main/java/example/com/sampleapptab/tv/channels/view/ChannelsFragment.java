@@ -132,6 +132,7 @@ public class ChannelsFragment extends BaseFragment {
                 }
                 getResponseHandler().handleGetChannelsResponse(requestBody, retrofitResponse,
                         mChannelList);
+                Logger.i(TAG, "mChannelList :" + mChannelList);
                 mChannelListRecyclerAdapter.notifyDataSetChanged();
             }
                 break;

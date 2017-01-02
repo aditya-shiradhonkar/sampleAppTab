@@ -31,4 +31,13 @@ public class Channel {
     public void setUrl(String url) {
         this.mUrl = url;
     }
+
+    @Override
+    public String toString() {
+        return "Channel{" +
+                "mChannelNumber='" + mChannelNumber + '\'' +
+                ", mChannelName='" + mChannelName + '\'' +
+                ", mUrl='" + mUrl + '\'' +
+                '}';
+    }
 }
