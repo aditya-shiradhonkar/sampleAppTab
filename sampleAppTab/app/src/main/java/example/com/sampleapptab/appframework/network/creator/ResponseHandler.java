@@ -59,6 +59,7 @@ public class ResponseHandler extends AbstractResponseHandler {
                 Channel channel = new Channel();
                 channel.setChannelNumber(String.valueOf(result.getNumber()));
                 channel.setChannelName(result.getName());
+                channel.setChannelName(result.getUrl());
                 channelList.add(channel);
             }
         }

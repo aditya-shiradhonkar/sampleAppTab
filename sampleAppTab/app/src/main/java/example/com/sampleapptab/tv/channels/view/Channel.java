@@ -6,7 +6,7 @@ package example.com.sampleapptab.tv.channels.view;
 public class Channel {
     String mChannelNumber;
     String mChannelName;
-    String mUrl = "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8";
+    String mUrl;
 
     public String getChannelNumber() {
         return mChannelNumber;
