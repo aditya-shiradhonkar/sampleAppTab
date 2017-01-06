@@ -16,7 +16,8 @@
             android:label="@string/app_name"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".tv.channels.view.ChannelActivity">
+        <activity android:name=".tv.channels.view.ChannelActivity"
+            android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
         <activity android:name=".splash.SplashActivity">

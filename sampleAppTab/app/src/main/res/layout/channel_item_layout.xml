@@ -1,24 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/channelItemLL"
+        android:background="@color/channel_background_color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/channelNumberTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:gravity="center"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/channelLogoIV"
+            android:layout_gravity="center_vertical"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/channelPlayingIV"
+            android:layout_gravity="center_vertical"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/channel_playing_logo"
+            android:scaleType="fitXY"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/dummyClockIV"
+            android:layout_gravity="center_vertical"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/dummy_clock_logo" />
+
+        <ImageView
+            android:id="@+id/channelDrawableLeftIV"
+            android:layout_gravity="center_vertical"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/channel_drawable_left" />
 
         <TextView
             android:id="@+id/channelNameTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
 
     </LinearLayout>
 </android.support.v7.widget.CardView>

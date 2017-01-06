@@ -16,7 +16,7 @@ public class ChannelActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_channel);
+        setContentView(R.layout.activity_channels);
 
         ChannelsFragment channelsFragment = new ChannelsFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();

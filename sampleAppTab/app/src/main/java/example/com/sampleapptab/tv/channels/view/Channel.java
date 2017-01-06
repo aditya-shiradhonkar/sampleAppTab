@@ -7,6 +7,24 @@ public class Channel {
     String mChannelNumber;
     String mChannelName;
     String mUrl;
+    String mLogoUrl;
+    boolean mIsPlaying;
+
+    public boolean isPlaying() {
+        return mIsPlaying;
+    }
+
+    public void setPlaying(boolean playing) {
+        mIsPlaying = playing;
+    }
+
+    public String getLogoUrl() {
+        return mLogoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.mLogoUrl = logoUrl;
+    }
 
     public String getChannelNumber() {
         return mChannelNumber;

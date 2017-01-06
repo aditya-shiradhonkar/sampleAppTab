@@ -77,7 +77,7 @@ public class ChannelsFragment extends BaseFragment {
 
         if (currentUrl != null) {
             Uri uri = Uri.parse(currentUrl);
-            mChannelPreviewVV.setMediaController(new MediaController(getActivity()));
+            mChannelPreviewVV.setMediaController(null);
             mChannelPreviewVV.setVideoURI(uri);
             mChannelPreviewVV.setTag(currentUrl);
             mChannelPreviewVV.requestFocus();

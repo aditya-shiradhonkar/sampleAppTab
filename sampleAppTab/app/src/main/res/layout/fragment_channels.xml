@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="example.com.sampleapptab.tv.channels.view.ChannelsFragment"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="@android:color/black">
 
     <RelativeLayout
         android:id="@+id/channelListPreviewRL"
@@ -14,22 +15,31 @@
         <TextView
             android:id="@+id/liveTvTitleTV"
             android:layout_centerHorizontal="true"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="LIVE TV/ALL/BY NUMBER"/>
 
-        <Button
-            android:layout_width="5dp"
-            android:layout_height="wrap_content"
-            android:text="BACK"/>
-
         <android.support.v7.widget.RecyclerView
             android:id="@+id/channelListRV"
             android:layout_below="@id/liveTvTitleTV"
+            android:layout_above="@+id/channelCountTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
         </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/channelCountTV"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:textAllCaps="true"
+            android:layout_alignParentBottom="true"
+            android:text="PAGE 1 OF 1. FOUND 2 CHANNELS."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
 
     <RelativeLayout
