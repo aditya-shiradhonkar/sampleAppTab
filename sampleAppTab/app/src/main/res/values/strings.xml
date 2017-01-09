@@ -11,4 +11,6 @@
     <string name="add_profile">Add Profile</string>
     <string name="select_profile">Select Profile</string>
     <string name="unauthorized">Unauthorized</string>
+
+    <string name="channel_count_text">Found %d Channels.</string>
 </resources>

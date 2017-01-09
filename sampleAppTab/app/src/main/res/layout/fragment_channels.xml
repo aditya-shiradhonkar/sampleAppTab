@@ -29,8 +29,7 @@
             android:id="@+id/currentTimeTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="TimeStamp"
+            android:layout_alignParentEnd="true"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:textSize="16sp"
@@ -66,7 +65,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="30dp"
-                android:text="PAGE 1 OF 1. FOUND 2 CHANNELS."
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
                 android:textSize="12sp" />
@@ -85,7 +83,10 @@
                 android:id="@+id/channelPreviewVV"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/videoview_border"
+                android:adjustViewBounds="true"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true" />
         </RelativeLayout>

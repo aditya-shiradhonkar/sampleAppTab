@@ -55,6 +55,7 @@ public class SplashFragment extends BaseFragment {
 
         final EditText editText = new EditText(getActivity());
         editText.setHint("Please enter your mac id here !!");
+        editText.setText("11:00:99:00:99:99");
         builder.setView(editText);
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override

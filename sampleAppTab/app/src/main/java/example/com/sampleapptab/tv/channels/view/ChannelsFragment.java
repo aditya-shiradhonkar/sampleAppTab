@@ -1,9 +1,6 @@
 
 package example.com.sampleapptab.tv.channels.view;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
 import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,12 +10,23 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.MediaController;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
+
+import org.w3c.dom.Text;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import example.com.sampleapptab.R;
 import example.com.sampleapptab.appframework.global.ConstantsApp;
@@ -40,6 +48,9 @@ public class ChannelsFragment extends BaseFragment {
     private ArrayList<Channel> mChannelList;
     private VideoView mChannelPreviewVV;
     private String currentUrl;
+    private TextView mChannelCountTV;
+    private Timer mTimer;
+    private TextView mCurrentTimeTV;
 
     public ChannelsFragment() {
         // Required empty public constructor
@@ -48,6 +59,7 @@ public class ChannelsFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         Logger.i(TAG, "onCreate");
         mChannelList = new ArrayList<>();
 
@@ -60,7 +72,7 @@ public class ChannelsFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         Logger.i(TAG, "onCreateView");
         // Inflate the layout for this fragment
         View channelsFragmentView = inflater.inflate(R.layout.fragment_channels, container, false);
@@ -73,6 +85,9 @@ public class ChannelsFragment extends BaseFragment {
         mChannelListRecyclerAdapter = new ChannelListRecyclerAdapter(this, mChannelList);
         channelListRV.setAdapter(mChannelListRecyclerAdapter);
 
+        mChannelCountTV = (TextView) channelsFragmentView.findViewById(R.id.channelCountTV);
+
+        mCurrentTimeTV = (TextView) channelsFragmentView.findViewById(R.id.currentTimeTV);
         mChannelPreviewVV = (VideoView) channelsFragmentView.findViewById(R.id.channelPreviewVV);
 
         if (currentUrl != null) {
@@ -86,10 +101,36 @@ public class ChannelsFragment extends BaseFragment {
         return channelsFragmentView;
     }
 
+    private void updateTime() {
+        mTimer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateTextView();
+                    }
+                });
+            }
+        };
+        mTimer.schedule(timerTask, 0, 1000);
+    }
+
+    private void updateTextView() {
+        Calendar calendar = Calendar.getInstance();
+        Date time = calendar.getTime();
+        String timeFormat = "hh:mm a"; // 12:00
+        String timeText = DateFormat.format(timeFormat, time).toString();
+        mCurrentTimeTV.setText(timeText);
+        //tvTime.setText(DateFormat.format(time, noteTS));
+    }
+
     @Override
     public void onResume() {
         super.onResume();
         Logger.i(TAG, "onResume");
+        updateTime();
     }
 
     @Override
@@ -102,6 +143,8 @@ public class ChannelsFragment extends BaseFragment {
     public void onStop() {
         super.onStop();
         Logger.i(TAG, "onStop");
+        mTimer.cancel();
+        mTimer = null;
     }
 
     @Override
@@ -133,9 +176,10 @@ public class ChannelsFragment extends BaseFragment {
                 getResponseHandler().handleGetChannelsResponse(requestBody, retrofitResponse,
                         mChannelList);
                 Logger.i(TAG, "mChannelList :" + mChannelList);
+                mChannelCountTV.setText(String.format(getResources().getString(R.string.channel_count_text), mChannelList.size()));
                 mChannelListRecyclerAdapter.notifyDataSetChanged();
             }
-                break;
+            break;
             default:
                 break;
         }
