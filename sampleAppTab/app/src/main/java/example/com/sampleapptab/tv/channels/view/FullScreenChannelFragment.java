@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.MediaController;
@@ -36,7 +37,17 @@ public class FullScreenChannelFragment extends BaseFragment {
         String url = getArguments().getString("url");
         Uri uri = Uri.parse(url);
 
-        fullScreenVV.setMediaController(new MediaController(getActivity()));
+        final  MediaController mediaController = new MediaController(getActivity());
+        mediaController.setVisibility(View.GONE);
+        fullScreenVV.setMediaController(mediaController);
+        fullScreenVV.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                mediaController.setVisibility(View.GONE);
+                mediaController.hide();
+                return false;
+            }
+        });
         fullScreenVV.setVideoURI(uri);
         fullScreenVV.requestFocus();
         fullScreenVV.start();

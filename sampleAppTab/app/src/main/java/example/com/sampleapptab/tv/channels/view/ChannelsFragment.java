@@ -12,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.MediaController;
@@ -92,7 +93,18 @@ public class ChannelsFragment extends BaseFragment {
 
         if (currentUrl != null) {
             Uri uri = Uri.parse(currentUrl);
-            mChannelPreviewVV.setMediaController(null);
+            final MediaController mediaController = new MediaController(getActivity());
+            mediaController.setVisibility(View.GONE);
+            mChannelPreviewVV.setMediaController(mediaController);
+            mChannelPreviewVV.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    mediaController.setVisibility(View.GONE);
+                    mediaController.hide();
+                    return false;
+                }
+            });
+
             mChannelPreviewVV.setVideoURI(uri);
             mChannelPreviewVV.setTag(currentUrl);
             mChannelPreviewVV.requestFocus();
@@ -210,8 +222,17 @@ public class ChannelsFragment extends BaseFragment {
             return;
         }
         Uri uri = Uri.parse(url);
-
-        mChannelPreviewVV.setMediaController(new MediaController(getActivity()));
+        final  MediaController mediaController = new MediaController(getActivity());
+        mediaController.setVisibility(View.GONE);
+        mChannelPreviewVV.setMediaController(mediaController);
+        mChannelPreviewVV.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                mediaController.setVisibility(View.GONE);
+                mediaController.hide();
+                return false;
+            }
+        });
         mChannelPreviewVV.setVideoURI(uri);
         mChannelPreviewVV.setTag(url);
         mChannelPreviewVV.requestFocus();
