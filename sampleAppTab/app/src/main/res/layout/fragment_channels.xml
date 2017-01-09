@@ -5,42 +5,67 @@
     android:background="@android:color/black"
     tools:context="example.com.sampleapptab.tv.channels.view.ChannelsFragment">
 
+    <RelativeLayout
+        android:id="@+id/titleLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/liveTvTitleTV"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="LIVE TV/ALL/BY NUMBER/"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_marginEnd="10dp"
+            android:id="@+id/currentTimeTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="TimeStamp"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
     <LinearLayout
-        android:layout_centerInParent="true"
+        android:id="@+id/mainLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_below="@+id/titleLayout"
+        android:layout_above="@+id/bottomLL"
+        android:orientation="horizontal"
+        android:weightSum="10">
 
         <RelativeLayout
             android:id="@+id/channelListPreviewRL"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/liveTvTitleTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="LIVE TV/ALL/BY NUMBER"
-                android:textAllCaps="true"
-                android:textColor="@android:color/white"
-                android:textSize="15sp" />
+            android:layout_weight="4.5">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/channelListRV"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_above="@+id/channelCountTV"
-                android:layout_below="@id/liveTvTitleTV">
-
-            </android.support.v7.widget.RecyclerView>
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="30dp" />
 
             <TextView
                 android:id="@+id/channelCountTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:layout_marginStart="30dp"
                 android:text="PAGE 1 OF 1. FOUND 2 CHANNELS."
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
@@ -50,24 +75,33 @@
         <RelativeLayout
             android:id="@+id/channelPreviewRL"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_height="300dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/videoview_border"
+            android:layout_weight="5.5">
 
             <VideoView
                 android:id="@+id/channelPreviewVV"
                 android:layout_width="match_parent"
-                android:layout_height="300dp" />
+                android:layout_height="match_parent"
+                android:background="@drawable/videoview_border"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
         </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/bottomLL"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:background="@color/channel_background_color"
+        android:baselineAligned="false"
         android:orientation="horizontal"
-        android:padding="25dp">
+        android:paddingEnd="30dp"
+        android:paddingStart="30dp"
+        android:paddingTop="5dp">
 
         <RelativeLayout
             android:id="@+id/viewRL"
@@ -75,17 +109,24 @@
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:layout_weight="1"
-            android:background="@android:color/darker_gray">
+            android:background="@drawable/white_gradient">
 
             <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp" />
+                android:id="@+id/redRound"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="2dp"
+                android:src="@drawable/round" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_margin="2dp"
+                android:layout_toEndOf="@id/redRound"
                 android:text="View"
-                android:textAllCaps="true" />
+                android:textAllCaps="true"
+                android:textColor="@color/channel_background_color" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -94,17 +135,24 @@
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:layout_weight="1"
-            android:background="@android:color/darker_gray">
+            android:background="@drawable/white_gradient">
 
             <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp" />
+                android:id="@+id/greenRound"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="2dp"
+                android:src="@drawable/round" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_margin="3dp"
+                android:layout_toEndOf="@id/greenRound"
                 android:text="Sort"
-                android:textAllCaps="true" />
+                android:textAllCaps="true"
+                android:textColor="@color/channel_background_color" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -113,17 +161,24 @@
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:layout_weight="1"
-            android:background="@android:color/darker_gray">
+            android:background="@drawable/white_gradient">
 
             <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp" />
+                android:id="@+id/yellowRound"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="2dp"
+                android:src="@drawable/round" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_margin="3dp"
+                android:layout_toEndOf="@id/yellowRound"
                 android:text="Favorite"
-                android:textAllCaps="true" />
+                android:textAllCaps="true"
+                android:textColor="@color/channel_background_color" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -132,17 +187,24 @@
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:layout_weight="1"
-            android:background="@android:color/darker_gray">
+            android:background="@drawable/white_gradient">
 
             <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp" />
+                android:id="@+id/blueRound"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="2dp"
+                android:src="@drawable/round" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_margin="3dp"
+                android:layout_toEndOf="@id/blueRound"
                 android:text="Move"
-                android:textAllCaps="true" />
+                android:textAllCaps="true"
+                android:textColor="@color/channel_background_color" />
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>
