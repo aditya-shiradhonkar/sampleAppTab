@@ -5,8 +5,25 @@
     android:background="@android:color/black"
     tools:context="example.com.sampleapptab.tv.channels.view.ChannelsFragment">
 
+    <TextView
+        android:id="@+id/backTV"
+        android:drawableTop="@drawable/left_arrow"
+        android:drawableBottom="@drawable/left_arrow"
+        android:textColor="@android:color/white"
+        android:text="@string/back"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="5dp"/>
+
     <RelativeLayout
         android:id="@+id/titleLayout"
+        android:layout_toStartOf="@+id/tvGuideTV"
+        android:layout_toEndOf="@id/backTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp">
@@ -36,8 +53,25 @@
             android:textStyle="bold" />
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/tvGuideTV"
+        android:textColor="@android:color/white"
+        android:drawableTop="@drawable/right_arrow"
+        android:drawableBottom="@drawable/right_arrow"
+        android:text="@string/tv_guide"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="20dp"/>
+
     <LinearLayout
         android:id="@+id/mainLayout"
+        android:layout_toStartOf="@+id/tvGuideTV"
+        android:layout_toEndOf="@id/backTV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/titleLayout"
@@ -57,7 +91,7 @@
                 android:layout_height="match_parent"
                 android:layout_above="@+id/channelCountTV"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="30dp" />
+                android:layout_marginStart="10dp" />
 
             <TextView
                 android:id="@+id/channelCountTV"
@@ -75,7 +109,7 @@
             android:layout_width="0dp"
             android:layout_height="300dp"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/videoview_border"
             android:layout_weight="5.5">
 

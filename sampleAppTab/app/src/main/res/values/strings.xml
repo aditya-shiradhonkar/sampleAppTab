@@ -13,4 +13,6 @@
     <string name="unauthorized">Unauthorized</string>
 
     <string name="channel_count_text">Found %d Channels.</string>
+    <string name="tv_guide">"TV&#160;GUIDE"</string>
+    <string name="back">"BACK"</string>
 </resources>
