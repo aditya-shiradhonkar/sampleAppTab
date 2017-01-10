@@ -17,4 +17,6 @@
     <string name="back">"BACK"</string>
     <string name="server_name">Server Name</string>
     <string name="other_settings">Other Settings</string>
+    <string name="url">URL</string>
+    <string name="macId">Mac ID</string>
 </resources>

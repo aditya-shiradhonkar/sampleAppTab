@@ -35,7 +35,7 @@
         android:layout_marginTop="20dp"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:text="@string/about_app" />
+        android:text="@string/url" />
 
     <TextView
         android:id="@+id/urlTV"

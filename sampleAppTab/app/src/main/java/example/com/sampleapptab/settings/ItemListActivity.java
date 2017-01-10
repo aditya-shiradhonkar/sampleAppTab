@@ -3,6 +3,7 @@ package example.com.sampleapptab.settings;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import example.com.sampleapptab.R;
 import example.com.sampleapptab.demochannel.DemoChannelFragment;
+import example.com.sampleapptab.tv.channels.view.ChannelActivity;
 
 public class ItemListActivity extends AppCompatActivity {
 
@@ -91,7 +93,6 @@ public class ItemListActivity extends AppCompatActivity {
                                     .commit();
                             break;
                         case 3:
-                        case 4:
                             Bundle arguments = new Bundle();
                             arguments.putString(ItemDetailFragment.ARG_ITEM_ID, holder.mItem.getMenuName());
                             ItemDetailFragment fragment = new ItemDetailFragment();
@@ -99,6 +100,10 @@ public class ItemListActivity extends AppCompatActivity {
                             getSupportFragmentManager().beginTransaction()
                                     .replace(R.id.item_detail_container, fragment)
                                     .commit();
+                            break;
+                        case 4:
+                            Intent intent = new Intent(ItemListActivity.this, ChannelActivity.class);
+                            startActivity(intent);
                             break;
 
                         default:

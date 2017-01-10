@@ -2,6 +2,7 @@
 package example.com.sampleapptab.tv.channels.view;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,8 +21,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-import org.w3c.dom.Text;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,8 +29,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import example.com.sampleapptab.R;
+import example.com.sampleapptab.app.SampleAppTabApplication;
 import example.com.sampleapptab.appframework.global.ConstantsApp;
 import example.com.sampleapptab.appframework.ui.BaseFragment;
+import example.com.sampleapptab.settings.ItemListActivity;
 import framework.global.Logger;
 import framework.global.Utils;
 import framework.network.RequestBody;
@@ -60,15 +61,16 @@ public class ChannelsFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        {
+            RequestBody requestBody = getRequestBodyCreator().createAuthenticationRequestBody(this,
+                    SampleAppTabApplication.getCurrentMacId());
+            requestBody.getCallback().sendRequest(requestBody);
+        }
+        mProgressDialog = Utils.showProgressDialog(getActivity(), "Message", "Please wait.. !!");
+        mProgressDialog.show();
 
         Logger.i(TAG, "onCreate");
         mChannelList = new ArrayList<>();
-
-        RequestBody requestBody = getRequestBodyCreator().createGetChannelsRequestBody(this);
-        requestBody.getCallback().sendRequest(requestBody);
-
-        mProgressDialog = Utils.showProgressDialog(getActivity(), "Message", "Please wait.. !!");
-        mProgressDialog.show();
     }
 
     @Override
@@ -192,6 +194,33 @@ public class ChannelsFragment extends BaseFragment {
                 mChannelListRecyclerAdapter.notifyDataSetChanged();
             }
             break;
+
+            case ConstantsApp.AUTHENTICATION_DETAILS: {
+
+                Response retrofitResponse = responseBody.getResponse();
+                Logger.i(TAG, "onSuccess AUTHENTICATION_DETAILS :" + retrofitResponse.body()
+                        + ", Message:" + retrofitResponse.getRawResponse().message());
+
+                if (retrofitResponse.body() == null) {
+                    Toast.makeText(getActivity(),
+                            "unauthorized" + ", Message :"
+                                    + retrofitResponse.getRawResponse().message() + " !!",
+                            Toast.LENGTH_SHORT).show();
+                    Intent intentToHome = new Intent(getActivity(), ItemListActivity.class);
+                    startActivityForResult(intentToHome, ConstantsApp.LOGIN_REQUEST_CODE);
+                    getActivity().finish();
+                    try {
+                        Logger.i(TAG, "Error " + retrofitResponse.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    return;
+                }
+
+                getResponseHandler().handleAuthenticationResponse(this, ConstantsApp.STATUS_OK,
+                        requestBody, retrofitResponse);
+            }
+            break;
             default:
                 break;
         }
@@ -222,7 +251,7 @@ public class ChannelsFragment extends BaseFragment {
             return;
         }
         Uri uri = Uri.parse(url);
-        final  MediaController mediaController = new MediaController(getActivity());
+        final MediaController mediaController = new MediaController(getActivity());
         mediaController.setVisibility(View.GONE);
         mChannelPreviewVV.setMediaController(mediaController);
         mChannelPreviewVV.setOnTouchListener(new View.OnTouchListener() {

@@ -2,6 +2,7 @@
 package example.com.sampleapptab.appframework.network.creator;
 
 import android.content.Intent;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import example.com.sampleapptab.tv.channels.model.Result;
 import example.com.sampleapptab.tv.channels.view.Channel;
 import example.com.sampleapptab.tv.channels.view.ChannelActivity;
 import framework.global.Logger;
+import framework.global.Utils;
 import framework.network.RequestBody;
 import framework.network.Response;
 
@@ -34,16 +36,17 @@ public class ResponseHandler extends AbstractResponseHandler {
 
         Logger.i(TAG, "handleAuthenticationResponse : " + authenticationResponseModel);
         if(authenticationResponseModel.getAccessToken() == null) {
+            Toast.makeText(baseFragment.getActivity(), "Unauthorized !!", Toast.LENGTH_SHORT).show();
             Intent intentToHome = new Intent(baseFragment.getActivity(), ItemListActivity.class);
             baseFragment.startActivityForResult(intentToHome, ConstantsApp.LOGIN_REQUEST_CODE);
             baseFragment.getActivity().finish();
             return;
         }
-
-        Intent intentToHome = new Intent(baseFragment.getActivity(), ChannelActivity.class);
-        baseFragment.startActivityForResult(intentToHome, ConstantsApp.LOGIN_REQUEST_CODE);
-        baseFragment.getActivity().finish();
         SampleAppTabApplication.setAccessToken(authenticationResponseModel.getAccessToken());
+        {
+            RequestBody getChannelsRequestBody = baseFragment.getRequestBodyCreator().createGetChannelsRequestBody(baseFragment);
+            requestBody.getCallback().sendRequest(getChannelsRequestBody);
+        }
     }
 
     @Override

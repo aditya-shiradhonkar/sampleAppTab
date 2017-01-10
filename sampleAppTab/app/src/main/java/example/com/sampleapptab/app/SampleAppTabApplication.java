@@ -12,6 +12,8 @@ public class SampleAppTabApplication extends Application {
     public static final String TAG = "SampleAppTabApplication";
 
     private static String sAccessToken;
+    private static String sCurrentMacId;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -26,5 +28,13 @@ public class SampleAppTabApplication extends Application {
 
     public static void setAccessToken(String accessToken) {
         sAccessToken = accessToken;
+    }
+
+    public static String getCurrentMacId() {
+        return sCurrentMacId;
+    }
+
+    public static void setCurrentMacId(String sCurrentMacId) {
+        SampleAppTabApplication.sCurrentMacId = sCurrentMacId;
     }
 }

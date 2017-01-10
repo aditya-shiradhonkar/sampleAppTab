@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -39,8 +39,8 @@ public class ChannelListRecyclerAdapter extends RecyclerView.Adapter<ChannelList
         final Channel channel = mChannelList.get(position);
         holder.mChannelNumberTV.setText(channel.mChannelNumber);
         holder.mChannelNameTV.setText(channel.mChannelName);
-        holder.mChannelItemLL.setOnClickListener(this);
-        holder.mChannelItemLL.setTag(channel);
+        holder.mChannelItemRL.setOnClickListener(this);
+        holder.mChannelItemRL.setTag(channel);
 
         if (channel.getLogoUrl() != null && !channel.getLogoUrl().isEmpty()) {
             holder.mChannelLogoIV.setVisibility(View.VISIBLE);
@@ -63,7 +63,7 @@ public class ChannelListRecyclerAdapter extends RecyclerView.Adapter<ChannelList
     public void onClick(View view) {
 
         switch (view.getId()) {
-            case R.id.channelItemLL:
+            case R.id.channelItemRL:
                 Channel channel = (Channel) view.getTag();
                 ((ChannelsFragment) mUiFragment).playChannel(channel.getUrl());
                 view.findViewById(R.id.channelPlayingIV).setVisibility(View.VISIBLE);
@@ -82,7 +82,7 @@ public class ChannelListRecyclerAdapter extends RecyclerView.Adapter<ChannelList
 
         final TextView mChannelNumberTV;
         final TextView mChannelNameTV;
-        final LinearLayout mChannelItemLL;
+        final RelativeLayout mChannelItemRL;
         final ImageView mChannelLogoIV;
         final ImageView mChannelPlayingIV;
         final ImageView mDummyClockIV;
@@ -90,7 +90,7 @@ public class ChannelListRecyclerAdapter extends RecyclerView.Adapter<ChannelList
 
         ViewHolder(View itemView) {
             super(itemView);
-            mChannelItemLL = (LinearLayout) itemView.findViewById(R.id.channelItemLL);
+            mChannelItemRL = (RelativeLayout) itemView.findViewById(R.id.channelItemRL);
             mChannelNumberTV = (TextView) itemView.findViewById(R.id.channelNumberTV);
             mChannelNameTV = (TextView) itemView.findViewById(R.id.channelNameTV);
             mChannelLogoIV = (ImageView) itemView.findViewById(R.id.channelLogoIV);

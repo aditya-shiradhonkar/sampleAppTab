@@ -9,7 +9,6 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,9 +27,11 @@ import example.com.sampleapptab.appframework.global.ConstantsApp;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ServerSettingsFragment extends Fragment {
+public class OtherSettingsFragment extends Fragment {
 
-    public ServerSettingsFragment() {
+    private String mProfileName;
+
+    public OtherSettingsFragment() {
         // Required empty public constructor
     }
 
@@ -38,53 +39,49 @@ public class ServerSettingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_server_settings, container, false);
-        final TextView profileNameTV = (TextView) rootView.findViewById(R.id.profileNameTV);
+        View rootView = inflater.inflate(R.layout.fragment_other_server_settings, container, false);
+        final TextView macIdTV = (TextView) rootView.findViewById(R.id.macIdTV);
 
         Profile profile;
         Bundle bundle = getArguments();
         if(bundle != null) {
-            String profileName = bundle.getString("profileName", "");
+            mProfileName = bundle.getString("profileName", "");
             SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(ConstantsApp.PROFILES_PREFERNCES, Context.MODE_APPEND);
-            String profileJsonString = sharedPreferences.getString(profileName, "");
+            String profileJsonString = sharedPreferences.getString(mProfileName, "");
             Gson gson = new Gson();
             profile = gson.fromJson(profileJsonString, Profile.class);
-            if(profile == null) {
-                profile = createProfile();
-            }
         } else {
-            profile = createProfile();
+            return rootView;
         }
 
-        profileNameTV.setText(profile.getProfileName());
-        TextView serverNameTV = (TextView) rootView.findViewById(R.id.serverNameTV);
-        serverNameTV.setOnClickListener(new View.OnClickListener() {
+        macIdTV.setText(profile.getMacAddress());
+        TextView macIdTitleTV = (TextView) rootView.findViewById(R.id.macIdTitleTV);
+        macIdTitleTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String title = "Server Name";
+                String title = "Mac ID";
                 final EditText editText = new EditText(getActivity());
 
-                editText.setText(profileNameTV.getText().toString());
+                editText.setText(macIdTV.getText().toString());
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 editText.setLayoutParams(layoutParams);
                 DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        String oldProfileName = profileNameTV.getText().toString();
 
                         SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(ConstantsApp.PROFILES_PREFERNCES, Context.MODE_APPEND);
-                        String profileJsonString = sharedPreferences.getString(oldProfileName, "");
+                        String profileJsonString = sharedPreferences.getString(mProfileName, "");
                         Gson gson = new Gson();
                         Profile newProfile = gson.fromJson(profileJsonString, Profile.class);
                         if(newProfile != null) {
-                            newProfile.setProfileName(editText.getText().toString());
+                            newProfile.setMacAddress(editText.getText().toString());
                             SharedPreferences.Editor editor = sharedPreferences.edit();
 
                             profileJsonString = gson.toJson(newProfile, Profile.class);
-                            editor.remove(oldProfileName);
                             editor.putString(newProfile.getProfileName(), profileJsonString);
                             editor.apply();
-                            profileNameTV.setText(newProfile.getProfileName());
+                            macIdTV.setText(newProfile.getMacAddress());
+                            SampleAppTabApplication.setCurrentMacId(newProfile.getMacAddress());
                         }
                     }
                 };
@@ -93,59 +90,6 @@ public class ServerSettingsFragment extends Fragment {
             }
         });
 
-        final TextView urlTV = (TextView) rootView.findViewById(R.id.urlTV);
-        urlTV.setText(profile.getUrl());
-
-        final TextView urlTitleTV = (TextView) rootView.findViewById(R.id.urlTitleTV);
-        urlTitleTV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String title = "URL";
-                final EditText editText = new EditText(getActivity());
-                editText.setText(urlTV.getText().toString());
-
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                editText.setLayoutParams(layoutParams);
-                DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        String oldProfileName = profileNameTV.getText().toString();
-
-                        SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(ConstantsApp.PROFILES_PREFERNCES, Context.MODE_APPEND);
-                        String profileJsonString = sharedPreferences.getString(oldProfileName, "");
-                        Gson gson = new Gson();
-                        Profile newProfile = gson.fromJson(profileJsonString, Profile.class);
-                        if(newProfile != null) {
-                            newProfile.setUrl(editText.getText().toString());
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-
-                            profileJsonString = gson.toJson(newProfile, Profile.class);
-                            editor.remove(oldProfileName);
-                            editor.putString(newProfile.getProfileName(), profileJsonString);
-                            editor.apply();
-                            urlTV.setText(newProfile.getUrl());
-                        }
-                    }
-                };
-
-                showDialog(title, editText, onClickListener);
-            }
-        });
-
-        TextView otherSettingsTV = (TextView) rootView.findViewById(R.id.otherSettingsTV);
-        otherSettingsTV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                OtherSettingsFragment otherSettingsFragment = new OtherSettingsFragment();
-
-                Bundle bundle = new Bundle();
-                bundle.putString("profileName", profileNameTV.getText().toString());
-                otherSettingsFragment.setArguments(bundle);
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.item_detail_container, otherSettingsFragment)
-                        .commit();
-            }
-        });
         return rootView;
     }
 
@@ -170,8 +114,6 @@ public class ServerSettingsFragment extends Fragment {
         WifiInfo wInfo = wifiManager.getConnectionInfo();
         String macAddress = wInfo.getMacAddress();
         profile.setMacAddress(macAddress);
-        SampleAppTabApplication.setCurrentMacId(macAddress);
-
         profile.setUrl("http://159.203.133.86/stalker_portal/");
         SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(ConstantsApp.PROFILES_PREFERNCES, Context.MODE_APPEND);
         SharedPreferences.Editor editor = sharedPreferences.edit();
