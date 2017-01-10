@@ -131,7 +131,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/channel_background_color"
+        android:background="@color/theme_blue"
         android:baselineAligned="false"
         android:orientation="horizontal"
         android:paddingEnd="30dp"
@@ -161,7 +161,7 @@
                 android:layout_toEndOf="@id/redRound"
                 android:text="View"
                 android:textAllCaps="true"
-                android:textColor="@color/channel_background_color" />
+                android:textColor="@color/theme_blue" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -187,7 +187,7 @@
                 android:layout_toEndOf="@id/greenRound"
                 android:text="Sort"
                 android:textAllCaps="true"
-                android:textColor="@color/channel_background_color" />
+                android:textColor="@color/theme_blue" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -213,7 +213,7 @@
                 android:layout_toEndOf="@id/yellowRound"
                 android:text="Favorite"
                 android:textAllCaps="true"
-                android:textColor="@color/channel_background_color" />
+                android:textColor="@color/theme_blue" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -239,7 +239,7 @@
                 android:layout_toEndOf="@id/blueRound"
                 android:text="Move"
                 android:textAllCaps="true"
-                android:textColor="@color/channel_background_color" />
+                android:textColor="@color/theme_blue" />
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

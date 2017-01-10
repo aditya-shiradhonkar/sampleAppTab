@@ -1,63 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="5dp">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:id="@+id/channelItemLL"
-        android:background="@color/channel_background_color"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="@drawable/round_corner_blue"
+        android:orientation="horizontal"
+        android:padding="2dp">
 
         <TextView
             android:id="@+id/channelNumberTV"
-            android:gravity="center"
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="15sp" />
+            android:layout_centerVertical="true"
+            android:layout_margin="2dp"
+            android:background="@drawable/round_corner"
+            android:textColor="@color/theme_blue"
+            android:textSize="15sp"
+            android:gravity="center_horizontal"
+            tools:text="2789" />
 
         <ImageView
             android:id="@+id/channelLogoIV"
-            android:layout_gravity="center_vertical"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/channelNumberTV"
             android:visibility="gone" />
 
         <ImageView
             android:id="@+id/channelPlayingIV"
-            android:layout_gravity="center_vertical"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/channel_playing_logo"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/channelLogoIV"
             android:scaleType="fitXY"
+            android:src="@drawable/channel_playing_logo"
             android:visibility="gone" />
 
         <ImageView
             android:id="@+id/dummyClockIV"
-            android:layout_gravity="center_vertical"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/dummy_clock_logo" />
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/channelPlayingIV"
+            android:src="@drawable/time_icon" />
 
         <ImageView
             android:id="@+id/channelDrawableLeftIV"
-            android:layout_gravity="center_vertical"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/channel_drawable_left" />
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/dummyClockIV"
+            android:src="@drawable/sqaure_icon" />
 
         <TextView
             android:id="@+id/channelNameTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/channelDrawableLeftIV"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:paddingStart="2dp"
+            android:paddingEnd="2dp"
+            tools:text="Sample Channel Name" />
 
-    </LinearLayout>
+    </RelativeLayout>
 </android.support.v7.widget.CardView>
