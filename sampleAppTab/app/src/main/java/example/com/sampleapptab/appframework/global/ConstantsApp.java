@@ -14,4 +14,6 @@ public class ConstantsApp {
     public static final int GET_CHANNELS_LIST = 3;
 
     public static final int LOGIN_REQUEST_CODE = 1;
+
+    public static final String PROFILES_PREFERNCES = "profiles_preferences";
 }

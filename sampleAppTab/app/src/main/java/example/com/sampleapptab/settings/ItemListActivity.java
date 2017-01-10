@@ -34,8 +34,7 @@ public class ItemListActivity extends AppCompatActivity {
         menuItems.add(new MenuItem(1, "Settings"));
         menuItems.add(new MenuItem(2, "Select Profile"));
         menuItems.add(new MenuItem(3, "About"));
-        menuItems.add(new MenuItem(4, "Demo Channel"));
-        menuItems.add(new MenuItem(5, "Exit"));
+        menuItems.add(new MenuItem(4, "Exit"));
 
         if (recyclerView != null) {
             setupRecyclerView((RecyclerView) recyclerView, menuItems);
@@ -92,19 +91,13 @@ public class ItemListActivity extends AppCompatActivity {
                                     .commit();
                             break;
                         case 3:
-                        case 5:
+                        case 4:
                             Bundle arguments = new Bundle();
                             arguments.putString(ItemDetailFragment.ARG_ITEM_ID, holder.mItem.getMenuName());
                             ItemDetailFragment fragment = new ItemDetailFragment();
                             fragment.setArguments(arguments);
                             getSupportFragmentManager().beginTransaction()
                                     .replace(R.id.item_detail_container, fragment)
-                                    .commit();
-                            break;
-                        case 4:
-                            DemoChannelFragment demoChannelFragment = new DemoChannelFragment();
-                            getSupportFragmentManager().beginTransaction()
-                                    .replace(R.id.item_detail_container, demoChannelFragment)
                                     .commit();
                             break;
 

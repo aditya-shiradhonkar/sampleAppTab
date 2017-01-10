@@ -7,33 +7,55 @@
     tools:context="example.com.sampleapptab.settings.SettingsFragment">
 
     <TextView
-        android:id="@+id/serverSettingsTV"
+        android:id="@+id/serverNameTV"
         android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@android:color/white"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/server_settings" />
+        android:text="@string/server_name" />
 
     <TextView
-        android:id="@+id/addOrModifyTV"
+        android:id="@+id/profileNameTV"
         android:textSize="12sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/serverSettingsTV"
-        android:text="@string/add_or_modify_server_settings" />
+        android:layout_below="@+id/serverNameTV"
+        />
 
     <TextView
-        android:id="@+id/aboutAppTV"
+        android:id="@+id/urlTitleTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:textColor="@android:color/white"
-        android:layout_below="@+id/addOrModifyTV"
+        android:layout_below="@+id/profileNameTV"
         android:layout_marginTop="20dp"
         android:textSize="16sp"
         android:textStyle="bold"
         android:text="@string/about_app" />
+
+    <TextView
+        android:id="@+id/urlTV"
+        android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/urlTitleTV"
+        />
+
+    <TextView
+        android:id="@+id/otherSettingsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/urlTV"
+        android:layout_marginTop="20dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="@string/other_settings" />
 </RelativeLayout>

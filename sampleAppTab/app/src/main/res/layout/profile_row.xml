@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/selectProfileButton"
         android:textSize="14sp"
         android:background="@drawable/button_gradient"
         android:textStyle="bold"
