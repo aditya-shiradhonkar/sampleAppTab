@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    >
 
     <Button
         android:id="@+id/selectProfileButton"
@@ -13,11 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="28dp"
         android:textAllCaps="true"
-        android:layout_toStartOf="@+id/delete_button"
-        android:text="Sample Profile Id XYZ214234828364" />
+        android:layout_toStartOf="@+id/deleteButton"
+        />
 
     <ImageView
-        android:id="@+id/delete_button"
+        android:id="@+id/deleteButton"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:layout_width="28dp"

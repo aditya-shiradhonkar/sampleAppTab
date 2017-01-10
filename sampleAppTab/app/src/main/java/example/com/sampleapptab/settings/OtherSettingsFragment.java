@@ -46,7 +46,7 @@ public class OtherSettingsFragment extends Fragment {
         Bundle bundle = getArguments();
         if(bundle != null) {
             mProfileName = bundle.getString("profileName", "");
-            SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(ConstantsApp.PROFILES_PREFERNCES, Context.MODE_APPEND);
+            SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(ConstantsApp.PROFILES_PREFERENCES, Context.MODE_APPEND);
             String profileJsonString = sharedPreferences.getString(mProfileName, "");
             Gson gson = new Gson();
             profile = gson.fromJson(profileJsonString, Profile.class);
@@ -69,7 +69,7 @@ public class OtherSettingsFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(ConstantsApp.PROFILES_PREFERNCES, Context.MODE_APPEND);
+                        SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(ConstantsApp.PROFILES_PREFERENCES, Context.MODE_APPEND);
                         String profileJsonString = sharedPreferences.getString(mProfileName, "");
                         Gson gson = new Gson();
                         Profile newProfile = gson.fromJson(profileJsonString, Profile.class);
@@ -115,7 +115,7 @@ public class OtherSettingsFragment extends Fragment {
         String macAddress = wInfo.getMacAddress();
         profile.setMacAddress(macAddress);
         profile.setUrl("http://159.203.133.86/stalker_portal/");
-        SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(ConstantsApp.PROFILES_PREFERNCES, Context.MODE_APPEND);
+        SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(ConstantsApp.PROFILES_PREFERENCES, Context.MODE_APPEND);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
         String profileJsonString = gson.toJson(profile, Profile.class);

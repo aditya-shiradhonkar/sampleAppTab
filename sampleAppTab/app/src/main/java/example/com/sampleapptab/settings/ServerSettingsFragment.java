@@ -9,7 +9,6 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +44,7 @@ public class ServerSettingsFragment extends Fragment {
         Bundle bundle = getArguments();
         if(bundle != null) {
             String profileName = bundle.getString("profileName", "");
-            SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(ConstantsApp.PROFILES_PREFERNCES, Context.MODE_APPEND);
+            SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(ConstantsApp.PROFILES_PREFERENCES, Context.MODE_APPEND);
             String profileJsonString = sharedPreferences.getString(profileName, "");
             Gson gson = new Gson();
             profile = gson.fromJson(profileJsonString, Profile.class);
@@ -72,7 +71,7 @@ public class ServerSettingsFragment extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String oldProfileName = profileNameTV.getText().toString();
 
-                        SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(ConstantsApp.PROFILES_PREFERNCES, Context.MODE_APPEND);
+                        SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(ConstantsApp.PROFILES_PREFERENCES, Context.MODE_APPEND);
                         String profileJsonString = sharedPreferences.getString(oldProfileName, "");
                         Gson gson = new Gson();
                         Profile newProfile = gson.fromJson(profileJsonString, Profile.class);
@@ -111,7 +110,7 @@ public class ServerSettingsFragment extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String oldProfileName = profileNameTV.getText().toString();
 
-                        SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(ConstantsApp.PROFILES_PREFERNCES, Context.MODE_APPEND);
+                        SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(ConstantsApp.PROFILES_PREFERENCES, Context.MODE_APPEND);
                         String profileJsonString = sharedPreferences.getString(oldProfileName, "");
                         Gson gson = new Gson();
                         Profile newProfile = gson.fromJson(profileJsonString, Profile.class);
@@ -170,10 +169,9 @@ public class ServerSettingsFragment extends Fragment {
         WifiInfo wInfo = wifiManager.getConnectionInfo();
         String macAddress = wInfo.getMacAddress();
         profile.setMacAddress(macAddress);
-        SampleAppTabApplication.setCurrentMacId(macAddress);
 
         profile.setUrl("http://159.203.133.86/stalker_portal/");
-        SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(ConstantsApp.PROFILES_PREFERNCES, Context.MODE_APPEND);
+        SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(ConstantsApp.PROFILES_PREFERENCES, Context.MODE_APPEND);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
         String profileJsonString = gson.toJson(profile, Profile.class);

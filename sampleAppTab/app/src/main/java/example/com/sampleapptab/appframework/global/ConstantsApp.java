@@ -15,5 +15,6 @@ public class ConstantsApp {
 
     public static final int LOGIN_REQUEST_CODE = 1;
 
-    public static final String PROFILES_PREFERNCES = "profiles_preferences";
+    public static final String PROFILES_PREFERENCES = "profiles_preferences";
+    public static final String SELECTED_PROFILES_PREFERENCES = "selected_profiles_preferences";
 }
