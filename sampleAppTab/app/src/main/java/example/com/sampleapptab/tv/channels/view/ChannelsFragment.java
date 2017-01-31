@@ -69,7 +69,7 @@ public class ChannelsFragment extends BaseFragment {
         mProgressDialog = Utils.showProgressDialog(getActivity(), "Message", "Please wait.. !!");
         mProgressDialog.show();
 
-        Logger.i(TAG, "onCreate");
+        Logger.i(TAG, "onCreate onCreate");
         mChannelList = new ArrayList<>();
     }
 
