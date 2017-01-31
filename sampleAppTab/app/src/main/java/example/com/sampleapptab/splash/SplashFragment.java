@@ -42,7 +42,7 @@ public class SplashFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Logger.i(TAG, "onCreate");
     }
 
     @Override
